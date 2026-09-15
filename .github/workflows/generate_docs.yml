@@ -1,0 +1,70 @@
+name: Doxygen Deployment
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.h'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  deployments: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout code ⬇️
+        uses: actions/checkout@v4
+
+      - name: 2. Install Doxygen ⚙️
+        #run: sudo apt-get update && sudo apt-get install -y doxygen #graphviz
+        uses: ssciwr/doxygen-install@v1
+        with:
+          version: "1.14.0"
+
+      - name: 3. Generate Doxygen documentation 🚀
+        run: doxygen docs/Doxyfile
+
+      - name: 4. Install lcov ⚙️
+        run: sudo apt-get update && sudo apt-get install -y lcov
+
+      - name: 5. Generate Coverage Report 📊
+        run: make coverage
+
+      - name: 6. Silently Add Coverage to Pages 🤫
+        run: |
+          mv coverage/html docs/html/coverage
+
+      - name: 7. Upload Artifact 📦
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs/html'
+
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🗑 Delete deployments
+        uses: strumwolf/delete-deployment-environment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: github-pages
+          onlyRemoveDeployments: true
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: 
+      - build
+      - cleanup
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

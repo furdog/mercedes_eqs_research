@@ -1,0 +1,8 @@
+#titlearea {
+	display: none;
+}
+
+img.inline {
+	max-width: 100%;
+	height: auto;
+}

@@ -1,0 +1,38 @@
+name: Check and Test
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - '**/*.h'
+      - '**/*.c'
+  workflow_dispatch:
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+
+    container:
+      image: gcc:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install static analysis tools
+        run: |
+          apt-get update
+          apt-get install -y cppcheck clang-tidy
+
+      - name: Run clang-tidy check
+        run: |
+          make lint
+
+      - name: Run MISRA check
+        run: |
+          make misra
+
+      - name: Run automated tests
+        run: |
+          make test

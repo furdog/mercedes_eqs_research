@@ -32,17 +32,17 @@ NS_ :
     SG_MUL_VAL_
 
 BS_: 
-BU_: Current Sensor 
-BO_ 2147483664 current_values: 8 Current Sensor
-   SG_ crc : 7|8@0+ (1,0) [0|1] "" Current Sensor
-   SG_ counter : 11|4@0+ (1,0) [0|1] "" Current Sensor
-   SG_ adc1 : 16|24@1- (0.0001,0) [0|1] "" Current Sensor
-   SG_ adc0 : 40|24@1- (0.0001,0) [0|1] "" Current Sensor
+BU_: Current_Sensor 
+BO_ 2147483664 current_values: 8 Current_Sensor
+   SG_ crc : 7|8@0+ (1,0) [0|1] "" Current_Sensor
+   SG_ counter : 11|4@0+ (1,0) [0|1] "" Current_Sensor
+   SG_ adc0 : 16|24@1- (0.0001,0) [0|1] "" Current_Sensor
+   SG_ adc1 : 40|24@1- (0.0001,0) [0|1] "" Current_Sensor
 
-BO_ 2147483744 unknown_current_value: 8 Current Sensor
-   SG_ adc : 0|25@1- (0.0001,0) [0|1] "" Current Sensor
+BO_ 2147483744 unknown_current_value: 8 Current_Sensor
+   SG_ adc2 : 0|25@1- (0.0001,0) [0|1] "" Current_Sensor
 
-CM_ BU_ Current Sensor "Default node if none specified";
+CM_ BU_ Current_Sensor "Default node if none specified";
 BA_DEF_ BO_ "GenMsgBackgroundColor" STRING ;
 BA_DEF_ BO_ "GenMsgForegroundColor" STRING ;
 BA_DEF_ BO_ "matchingcriteria" INT 0 0;
