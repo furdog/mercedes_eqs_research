@@ -25,11 +25,12 @@
  *
  * Pinout (left to right):
  * - 1 - GND
- * - 2 - CANH
- * - 3 - CANL
- * - 4 - 12Vin
- * - 5 - 5V(unknown direction)
- * - 6 - ??? floating
+ * - 2 - CANH ---\---
+ * 	         [] 120ohm
+ * - 3 - CANL ---/---
+ * - 4 - 12V input
+ * - 5 - 5V output
+ * - 6 - unknown, floating
  *
  * The design of the library is hardware-agnostic,
  * requiring an external adaptation layer for hardware interaction.

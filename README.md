@@ -28,8 +28,8 @@ Connector socket pinout 0...5 (facing from outside, **LEFT** to **RIGHT** order 
 - 1 - GND
 - 2 - CANH
 - 3 - CANL
-- 4 - VCC (12V) -> V2 (CAN 5v voltage regulator)
-- 5 - (5V) Unknown purpose pin traced to unknown OEM chip 48 pin (last).
+- 4 - VCC (12V input) -> V2 (CAN 5v voltage regulator)
+- 5 - (5V output) Unknown purpose pin traced to unknown OEM chip 48 pin (last).
 - 6 - ??? Goes through capacitor to the ground (not connected to the bms via cable and just floating)
 
 Initial assumption was: 2CAN, 1LIN, 12V, gnd.
