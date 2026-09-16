@@ -2,7 +2,7 @@
 #include "mercedes_eqs_current_sensor.h"
 #include <assert.h>
 
-void test_meqscs_init(void)
+static void test_meqscs_init(void)
 {
 	struct meqscs	   sensor;
 	struct meqscs_vars vars;
@@ -17,7 +17,7 @@ void test_meqscs_init(void)
 	assert(sensor.vars.adc2_r0p0001a == 0);
 }
 
-void test_meqscs_h010_parsing(void)
+static void test_meqscs_h010_parsing(void)
 {
 	struct meqscs	    sensor;
 	struct meqscs_vars  vars;

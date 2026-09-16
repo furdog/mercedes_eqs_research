@@ -4,6 +4,8 @@ Doing my own research from scratch.
 Since there was no information available from third party sources
 at the moment of creation of this repository.
 
+I'll add more details as I go along.
+
 ## Discovered internals
 
 ### Current sensor
@@ -75,6 +77,10 @@ Other are not meaningful or unknown
 > 14.09.2026
 
 I've added hap_c89_template into src/ and started writing abstract code to reflect current sensor functionality.
+
+> 16.09.2026
+
+I've added abstract code for the current sensor and test cases to the project.
 
 ## Coding guidelines
 > Insert this section as a placeholder at the end of README
