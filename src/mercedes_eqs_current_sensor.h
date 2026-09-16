@@ -44,9 +44,12 @@
 #ifndef MEQSCS_H
 #define MEQSCS_H
 
-#include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>
+
+#ifdef MEQSCS_IMPL
+#include <string.h>
+#endif
 
 /** Defines the maximum frame data length for the current sensor reader */
 #define MEQSCS_MAX_FRAME_DATA_LEN 8U
@@ -129,7 +132,7 @@ void meqscs_hal_parse_frame(struct meqscs *self, struct meqscs_frame *frame)
 					   ((uint32_t)frame->data[6U] << 8U) |
 					   ((uint32_t)frame->data[7U] << 16U);
 
-		self->h010_uptime_r1ms = 0;
+		self->h010_timer_r1ms = 0;
 		break;
 
 	/* SG_ adc2 : 0|25@1- (0.0001,0) [0|1] "" Current_Sensor */
@@ -142,7 +145,7 @@ void meqscs_hal_parse_frame(struct meqscs *self, struct meqscs_frame *frame)
 		    ((uint32_t)frame->data[2U] << 16U) |
 		    ((uint32_t)(frame->data[3U] & 1U) << 24U);
 
-		self->h060_uptime_r1ms = 0;
+		self->h060_timer_r1ms = 0;
 		break;
 
 	default:
@@ -158,7 +161,7 @@ bool meqscs_get_vars(struct meqscs *self, struct meqscs_vars *vars)
 	if ((self->h010_timer_r1ms >= MEQSCS_FRAME_H010_TIMEOUT_MS) ||
 	    (self->h060_timer_r1ms >= MEQSCS_FRAME_H060_TIMEOUT_MS)) {
 		/* No valid data yet, return zeroed vars */
-		memset(vars, 0, sizeof(struct meqscs_vars));
+		(void)memset(vars, 0, sizeof(struct meqscs_vars));
 		result = false;
 	} else {
 		*vars  = self->vars;
