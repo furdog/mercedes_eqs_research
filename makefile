@@ -63,6 +63,9 @@ test: $(SOURCE_FILES)
 	# Clean up the test executable
 	@rm -f $(TEST_OUTPUT)
 
+pec_calculator:
+	gcc src/pec_calculator.c -o pec_calculator
+
 coverage:
 	@echo "--- Cleaning old coverage data ---"
 	rm -rf coverage
