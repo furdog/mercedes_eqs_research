@@ -11,13 +11,18 @@ I'll add more details as I go along.
 ### Main BMS board
 Nothing really important here.
 
+There are TWO BMS boards in the EQS.
+Both boards are separate from each other.
+Each board controls 6 cell monitoring modules and 1 current sensor.
+(12 cell monitoring modules and 2 current sensors in total).
+
 ![](media/IMG_20260929_155734270_HDR.jpg)
 _(Front view)_
 
 ![](media/IMG_20260929_155812670.jpg)
 _(Rear view)_
 
-Controls 6/12 external cell monitoring modules (which are based on LTC6813-1)
+6 external cell monitoring modules (which are based on LTC6813-1) are connected
 via SPI-isoSPI converter chip (LTC6820). The isoSPI converter chip
 (16-LEAD PLASTIC MSOP package) is located on the main BMS board.
 
@@ -135,6 +140,12 @@ LTC6813-1 approaches 35mA when simultaneously communicating over isoSPI and maki
 the VREG pin is required to support any additional load,
 a transistor with an even higher Beta may be required. 
 ```
+
+There are 6 cell monitoring modules (LTC6813-1) per BMS board.
+All connected in a daisy-chain configuration with each other and
+via SPI-isoSPI converter chip (LTC6820) to the main BMS board.
+
+![Daisy-chain gif](media/spi-daisy-chain-1.gif)
 
 ## Coding guidelines
 > Insert this section as a placeholder at the end of README

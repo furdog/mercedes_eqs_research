@@ -1,3 +1,9 @@
+[General]
+decode_signals=1
+generated_signals=0
+views=2
+meta_objs=8
+
 [D0]
 name=D0
 enabled=true
@@ -91,18 +97,12 @@ channel3\name=CS#
 channel3\initial_pin_state=2
 channel3\assigned_signal_name=D5
 
-[General]
-decode_signals=1
-generated_signals=0
-views=2
-meta_objs=8
-
 [view0]
-scale=1.5147883032415017e-6
+scale=6.732392458851119e-7
 v_offset=-147
 splitter_state=@ByteArray(\0\0\0\xff\0\0\0\x1\0\0\0\x2\0\0\0?\0\0\x4\x41\x1\0\0\0\x1\x1\0\0\0\x1\0)
 segment_display_mode=3
-offset=22 serialization::archive 14 0 0 0 0 80857361 15269651 47229735 34171639 13392149 90011963 -8 0 0 6
+offset=22 serialization::archive 14 0 0 0 0 80895230 86027755 22707616 52571746 90471574 87796482 -8 0 0 6
 zero_offset=22 serialization::archive 14 0 0 0 0 0 0 0 0 0 0 0 0 0 6
 D0\trace_height=26
 D1\trace_height=26
