@@ -8,6 +8,31 @@ I'll add more details as I go along.
 
 ## Discovered internals
 
+### Main BMS board
+Nothing really important here.
+
+![](media/IMG_20260929_155734270_HDR.jpg)
+_(Front view)_
+
+![](media/IMG_20260929_155812670.jpg)
+_(Rear view)_
+
+Controls 6/12 external cell monitoring modules (which are based on LTC6813-1)
+via SPI-isoSPI converter chip (LTC6820). The isoSPI converter chip
+(16-LEAD PLASTIC MSOP package) is located on the main BMS board.
+
+We have connected 12v+ (orange wire with knot) and GND (orange wire)
+to the board. And we have connected logic analyzer to the LTC6820
+for the analysis of SPI traffic.
+
+Logs have been captured via PulseView and are available in the `logs`
+directory. See `bms_no_LTC6813-1_connected_mosi_only.sr`.
+
+Looks like every SPI frame have PEC checksum at the end of the message.
+The PEC calculator command line utility is available at `src/pec_calculator.c`.
+You could just run for example `./pec_calculator FFFF`
+to calculate the PEC checksum for the message `FFFF`.
+
 ### Current sensor
 ![IMG_20260909_141050045_HDR.jpg](media/IMG_20260909_141050045_HDR.jpg)
 _(Part number)_
@@ -81,6 +106,35 @@ I've added hap_c89_template into src/ and started writing abstract code to refle
 > 16.09.2026
 
 I've added abstract code for the current sensor and test cases to the project.
+
+### Cell monitoring module based on LTC6813-1
+
+![Module facade](media/IMG_20260929_155903859.jpg)
+_(Facade with part number)_
+
+![Module internals](media/IMG_20260908_161812341.jpg)
+_(Module internals)_
+
+The external cell monitoring module based on LTC6813-1.
+Monitors and balances 18 cells at once. It uses V+ for power supply,
+Connected via simple linear regulator. (As stated in LTC6813-1 datasheet).
+No additional power supply components have been found.
+
+Here is the citation from the LTC6813-1 datasheet itself:
+
+```
+Simple Linear Regulator
+The primary supply pin for the LTC6813-1 is the 5V
+(±0.5V) VREG input pin. To generate the required 5V supply for VREG, the DRIVE pin can be used to form a discrete
+regulator with the addition of a few external components,
+as shown in Figure 32. The DRIVE pin provides a 5.7V output, capable of sourcing 1mA. When buffered with an NPN
+transistor, this provides a stable 5V over temperature. The
+NPN transistor should be chosen to have a sufficient Beta
+over temperature (> 40) to supply the necessary supply current. The peak VREG current requirement of the
+LTC6813-1 approaches 35mA when simultaneously communicating over isoSPI and making ADC conversions. If
+the VREG pin is required to support any additional load,
+a transistor with an even higher Beta may be required. 
+```
 
 ## Coding guidelines
 > Insert this section as a placeholder at the end of README
