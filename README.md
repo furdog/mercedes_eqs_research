@@ -141,6 +141,61 @@ the VREG pin is required to support any additional load,
 a transistor with an even higher Beta may be required. 
 ```
 
+The balancing circuit is also made close to datasheet:
+![Socket pinout](media/cell_balancing_circuit.png)
+_(Balancing circuit analysis)_
+
+There are two sockets used for balancing and
+*temperature probing (Needs confirmation)
+![Socket pinout](media/socket_pinout.png)
+_(Socket pinout)_
+
+#### Daisy chain socket to LTC6813-1 mapping:
+- 1A, 1B - Twisted ISO SPI Pair (IMB, IPB)
+- 4A, 4B - Twisted ISO SPI Pair (IMA, IPA)
+- 2A, 2B, 3A, 3B - Not connected (NC).
+
+> [!WARNING]
+> I am not sure about twisted pair order.
+>
+> I could not confirm the order on bench.
+
+#### Front socket to LTC6813-1 mapping:
+- 14A: C17 (Rose)
+- 13A: C15 (Violet)
+- 12A: C13 (Orange)
+- 11A: C11 (White)
+- 10A: C9  (Gray)
+- 9A:  C7  (Blue)
+- 8A:  C5  (Yellow)
+- 7A:  C3  (Green)
+- 6A:  C1  (Dark red)
+- 5A:  ??? (Light blue) (Temp sensor?)
+- 4A:  V-  (Dark red + green line)
+- 3A:  ??? (Brown) (Temp sensor?)
+- 2A:  ??? (Black) (Temp sensor?)
+- Other pins: Not connected (NC)
+
+#### Rear socket to LTC6813-1 mapping:
+- 18B: V+  (Red) (Connect last cell plus terminal to this pin)
+- 17B: C18 (Light blue)
+- 16B: C16 (Green)
+- 15B: C14 (Yellow)
+- 14B: C12 (Orange)
+- 13B: C10 (Gray)
+- 12B: C8  (Brown)
+- 11B: C6  (White)
+- 10B: C4  (Orange)
+- 9B:  C2  (Violet)
+- 8B:  ??? (Rose) (temp sensor?)
+- 7B:  C0  (Blue) (V-)
+- Other pins: Not connected (NC)
+
+> [!NOTE]
+> Check you don't confuse front socket and rear socket.
+>
+> Wrong connection won't harm, but it will not work.
+
 There are 6 cell monitoring modules (LTC6813-1) per BMS board.
 All connected in a daisy-chain configuration with each other and
 via SPI-isoSPI converter chip (LTC6820) to the main BMS board.
