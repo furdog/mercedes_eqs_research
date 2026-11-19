@@ -151,9 +151,9 @@ There are two sockets used for balancing and
 _(Socket pinout)_
 
 #### Daisy chain socket to LTC6813-1 mapping:
-- 1A, 1B - Twisted ISO SPI Pair (IMB, IPB)
-- 4A, 4B - Twisted ISO SPI Pair (IMA, IPA)
-- 2A, 2B, 3A, 3B - Not connected (NC).
+- 1, 5 - Twisted ISO SPI Pair (IMB, IPB)
+- 4, 8 - Twisted ISO SPI Pair (IMA, IPA)
+- Other pins: Not connected (NC).
 
 > [!WARNING]
 > I am not sure about twisted pair order.
@@ -161,34 +161,34 @@ _(Socket pinout)_
 > I could not confirm the order on bench.
 
 #### Front socket to LTC6813-1 mapping:
-- 14A: C17 (Rose)
-- 13A: C15 (Violet)
-- 12A: C13 (Orange)
-- 11A: C11 (White)
-- 10A: C9  (Gray)
-- 9A:  C7  (Blue)
-- 8A:  C5  (Yellow)
-- 7A:  C3  (Green)
-- 6A:  C1  (Dark red)
-- 5A:  ??? (Light blue) (Temp sensor?)
-- 4A:  V-  (Dark red + green line)
-- 3A:  ??? (Brown) (Temp sensor?)
-- 2A:  ??? (Black) (Temp sensor?)
+- 14: C17 (Rose)
+- 13: C15 (Violet)
+- 12: C13 (Orange)
+- 11: C11 (White)
+- 10: C9  (Gray)
+- 9:  C7  (Blue)
+- 8:  C5  (Yellow)
+- 7:  C3  (Green)
+- 6:  C1  (Dark red)
+- 5:  temp sensor? (Light blue)
+- 4:  V-  (Dark red + green line)
+- 3:  temp sensor? (Brown)
+- 2:  temp sensor? (Black)
 - Other pins: Not connected (NC)
 
 #### Rear socket to LTC6813-1 mapping:
-- 18B: V+  (Red) (Connect last cell plus terminal to this pin)
-- 17B: C18 (Light blue)
-- 16B: C16 (Green)
-- 15B: C14 (Yellow)
-- 14B: C12 (Orange)
-- 13B: C10 (Gray)
-- 12B: C8  (Brown)
-- 11B: C6  (White)
-- 10B: C4  (Orange)
-- 9B:  C2  (Violet)
-- 8B:  ??? (Rose) (temp sensor?)
-- 7B:  C0  (Blue) (V-)
+- 32: V+  (Red)
+- 31: C18 (Light blue)
+- 30: C16 (Green)
+- 29: C14 (Yellow)
+- 28: C12 (Orange)
+- 27: C10 (Gray)
+- 26: C8  (Brown)
+- 25: C6  (White)
+- 24: C4  (Orange)
+- 23: C2  (Violet)
+- 22: temp sensor? (Rose)
+- 21: V-, C0 (Blue)
 - Other pins: Not connected (NC)
 
 > [!NOTE]
