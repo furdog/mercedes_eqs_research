@@ -1,10 +1,17 @@
 # Mercedes EQS BMS research
-
 Doing my own research from scratch.
-Since there was no information available from third party sources
-at the moment of creation of this repository.
+Since i had no information available at the moment of creation
+of this repository.
 
 I'll add more details as I go along.
+
+> 19.11.2026 Update
+
+I have found similar topic on:
+https://openinverter.org/forum/viewtopic.php?t=5059
+
+This topic helped me to clarify correct order of ISO-SPI communication line,
+as well as temperature sensor GPIO.
 
 ## Discovered internals
 
@@ -151,14 +158,9 @@ There are two sockets used for balancing and
 _(Socket pinout)_
 
 #### Daisy chain socket to LTC6813-1 mapping:
-- 1, 5 - Twisted ISO SPI Pair (IMB, IPB)
-- 4, 8 - Twisted ISO SPI Pair (IMA, IPA)
+- 1, 5 - Twisted ISO SPI Pair (IPB, IMB)
+- 4, 8 - Twisted ISO SPI Pair (IPA, IMA)
 - Other pins: Not connected (NC).
-
-> [!WARNING]
-> I am not sure about twisted pair order.
->
-> I could not confirm the order on bench.
 
 #### Front socket to LTC6813-1 mapping:
 - 14: C17 (Rose)
@@ -170,11 +172,13 @@ _(Socket pinout)_
 - 8:  C5  (Yellow)
 - 7:  C3  (Green)
 - 6:  C1  (Dark red)
-- 5:  temp sensor? (Light blue)
+- 5:  GPIO6 (Light blue)
 - 4:  V-  (Dark red + green line)
-- 3:  temp sensor? (Brown)
-- 2:  temp sensor? (Black)
+- 3:  GPIO5 (Brown)
+- 2:  GPIO4 (Black)
 - Other pins: Not connected (NC)
+
+GPIO4, GPIO5, GPIO6 - Measures eternal NTC temperature sensors
 
 #### Rear socket to LTC6813-1 mapping:
 - 32: V+  (Red)
@@ -187,8 +191,8 @@ _(Socket pinout)_
 - 25: C6  (White)
 - 24: C4  (Orange)
 - 23: C2  (Violet)
-- 22: temp sensor? (Rose)
-- 21: V-, C0 (Blue)
+- 22: C0  (Rose)
+- 21: V-  (Blue)
 - Other pins: Not connected (NC)
 
 > [!NOTE]
